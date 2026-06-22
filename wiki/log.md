@@ -155,6 +155,28 @@ meta-benchmark), [concepts/agentic-scaffolding.md](concepts/agentic-scaffolding.
 (triangulating-benchmarks list extended), and
 [index.md](index.md).
 
+## [2026-06-22] refactor | 2D chart upgraded from ASCII to matplotlib
+
+Replaced the ASCII chart on
+[frontier-leaderboard.md](frontier-leaderboard.md) with a
+matplotlib scatter plot at
+[`wiki/assets/frontier-leaderboard.png`](assets/frontier-leaderboard.png).
+The generator script
+[`scripts/generate_frontier_chart.py`](../scripts/generate_frontier_chart.py)
+is the single source of truth for placements: the `MODELS` table
+at the top of the file is the editable list. Models are colored
+by vendor (Anthropic, OpenAI, Google, Zhipu AI). Marker shape
+signals placement confidence: filled circle = both axes measured;
+hollow square = proxy or inferred placement; down-arrow caret =
+absent from the FrontierMath Tier 4 v2 top-5, y plotted as a
+conservative ceiling. FrontierMath ±% confidence intervals appear
+as vertical error bars on measured points. The empty upper-right
+"frontier" quadrant is shaded to highlight the wiki's headline
+observation that no current model leads both axes. Schema in
+[CLAUDE.md](../CLAUDE.md) extended with a "Generated assets"
+convention (one script under `scripts/` per asset under
+`wiki/assets/`; edit-script-then-regen-PNG flow).
+
 ## [2026-06-22] scope | Models and benchmarks tracked at v0
 
 Six models tracked: [Claude Fable 5](models/claude-fable-5.md),

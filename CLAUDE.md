@@ -59,11 +59,15 @@ llm-frontier-wiki/
 ├── llm-wiki.md                 (reference copy of the generic pattern)
 ├── README.md                   (repo landing page)
 ├── papers/                     (immutable source snapshots)
+├── scripts/                    (chart regenerators; one Python file per generated asset)
+│   └── generate_frontier_chart.py
 └── wiki/
     ├── overview.md             (orientation and reading paths)
     ├── index.md                (flat catalog of every wiki page)
     ├── log.md                  (chronological append-only log)
     ├── frontier-leaderboard.md (the 2D ranking page — live root chart)
+    ├── assets/                 (generated images committed to git)
+    │   └── frontier-leaderboard.png
     ├── concepts/
     │   ├── concepts.md         (section hub)
     │   ├── frontier-reasoning.md
@@ -75,11 +79,23 @@ llm-frontier-wiki/
     │   ├── vending-bench-2.md
     │   ├── deepswe.md
     │   ├── frontiermath.md
+    │   ├── harness-bench.md
     │   └── swe-prbench.md
     └── models/
         ├── models.md           (section hub)
         └── <slug>.md           (one per frontier model tracked)
 ```
+
+**Generated assets.** The 2D leaderboard image at
+`wiki/assets/frontier-leaderboard.png` is produced by
+`scripts/generate_frontier_chart.py`. The script is the single
+source of truth for the chart's placements: when a score lands or
+moves, **edit the `MODELS` table inside the script, re-run it, and
+commit the script + the regenerated PNG together** (and update the
+matching prose in `wiki/frontier-leaderboard.md` and the relevant
+model leaf in the same commit). Do not edit the PNG by hand. Future
+charts follow the same convention: one Python file under `scripts/`
+per generated asset under `wiki/assets/`, named to match.
 
 **Naming convention (folder-note pattern):** there is exactly ONE
 `README.md` in the entire repo, at the root. Every wiki section uses
