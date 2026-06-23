@@ -5,19 +5,19 @@
 ## What it is
 
 Google DeepMind's late-2025 / early-2026 flagship frontier model.
-The wiki tracks Gemini 3 Pro because it holds rank 3 on the public
-[Vending-Bench 2](../benchmarks/vending-bench-2.md) leaderboard
-and is one of the only non-Anthropic models with a documented
-five-run-average position on that benchmark. The wiki does not
-track Gemini 3 Flash separately because its position is on the
-same leaderboard at rank 4 and the qualitative wiki claim is
-about Pro.
+The wiki tracks Gemini 3 Pro because it held rank 3 on the
+[Vending-Bench 2](../benchmarks/vending-bench-2.md) leaderboard at the
+2025-12 filing and was one of the only non-Anthropic models with a
+documented five-run-average position on that benchmark. As of the
+2026-06-23 refresh its $5,478.16 is unchanged but newer entrants
+(Opus 4.7, GLM-5.2, GPT-5.5, Sonnet 4.6) have pushed it below the
+current top ten.
 
 ## Scores on tracked benchmarks
 
 | Benchmark | Score | Effort tier | Filed | Source |
 |-----------|-------|-------------|-------|--------|
-| [Vending-Bench 2](../benchmarks/vending-bench-2.md) | **$5,478.16** (rank 3, 5-run avg) | not disclosed | 2025-12 | [llm-stats mirror](https://llm-stats.com/benchmarks/vending-bench-2) |
+| [Vending-Bench 2](../benchmarks/vending-bench-2.md) | **$5,478.16** (was rank 3; below current top 10) | not disclosed | 2025-12 | [Andon Labs](https://andonlabs.com/evals/vending-bench-2) (accessed 2026-06-23) |
 | [FrontierMath Tier 4 (v2)](../benchmarks/frontiermath.md) | not in top-5 | — | — | — |
 | [DeepSWE](../benchmarks/deepswe.md) | not on the public leaderboard | — | — | — |
 | [SWE-PRBench](../benchmarks/swe-prbench.md) | not in paper baseline | — | — | — |
@@ -30,11 +30,13 @@ secondary context.
 
 ## Where this model sits on the axes
 
-- **Long-horizon agentic coherence:** **Top-3 public placement.**
-  Gemini 3 Pro's $5,478.16 on Vending-Bench 2 sits in a narrow
-  band with GLM-5.1 ($5,634.41) and ~$2,500 below Opus 4.6's
-  leaderboard lead. The Google line therefore sits in the
-  "competitive but not leading" band on this axis.
+- **Long-horizon agentic coherence:** **Competitive but no longer
+  top-tier.** Gemini 3 Pro's $5,478.16 on Vending-Bench 2 was a top-3
+  placement in late 2025, but the 2026-06 board has it below the top
+  ten — well behind the open-weights leader [GLM-5.2](glm-5-2.md)
+  ($8,313.78) and ~$5,500 below the leader Opus 4.7 ($10,936.76). The
+  Google line therefore sits in the "competitive but trailing the
+  current frontier" band on this axis.
 - **Frontier reasoning:** **Not in the top-5 public ranking** on
   FrontierMath Tier 4 v2. The model's most relevant reasoning
   comparisons live on benchmarks the wiki does not yet track
@@ -58,17 +60,18 @@ Pick Gemini 3 Pro when:
 Do not pick Gemini 3 Pro when:
 
 - The job demands the absolute long-horizon agentic ceiling —
-  Opus 4.6 / 4.7 lead the Vending-Bench 2 axis.
+  Opus 4.7 leads the Vending-Bench 2 axis, with GLM-5.2 the
+  open-weights alternative, both well above Gemini 3 Pro.
 - The job demands the absolute reasoning ceiling — Fable 5 leads
   the FrontierMath axis and Gemini is not on the top-5 board.
 
 ## Known caveats
 
-- **Filed 2025-12.** The public Vending-Bench 2 row is from late
-  2025; newer Gemini generations (3.1, Flash variants) have
-  partial coverage elsewhere but not on the canonical
-  leaderboards the wiki tracks.
-- **Self-reported.** Same caveat as every Vending-Bench 2 row.
+- **Score is from 2025-12.** The Vending-Bench 2 row predates the
+  current board; the figure has not moved but the field has, so the
+  rank is stale even though the dollar value is not.
+- **Operator-run.** Same caveat as every Vending-Bench 2 row — run
+  and reported by Andon Labs on its own harness.
 - **No FrontierMath top-5 placement.** A model that does not file
   a competitive number on the wiki's primary reasoning benchmark
   cannot be ranked on that axis except by inference; the wiki
@@ -80,5 +83,5 @@ Do not pick Gemini 3 Pro when:
 - [../frontier-leaderboard.md](../frontier-leaderboard.md)
 - [../benchmarks/vending-bench-2.md](../benchmarks/vending-bench-2.md)
 - [../concepts/long-horizon-agentic-coherence.md](../concepts/long-horizon-agentic-coherence.md)
-- [glm-5-1.md](glm-5-1.md) — the open-weights sibling at similar
-  Vending-Bench 2 position.
+- [glm-5-2.md](glm-5-2.md) — the open-weights sibling, now well
+  above Gemini 3 Pro on this benchmark.

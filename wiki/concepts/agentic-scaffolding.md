@@ -101,10 +101,11 @@ sense.
 
 ## A revealing cross-benchmark observation
 
-[Claude Opus 4.6](../models/claude-opus-4-7.md) is the
-[Vending-Bench 2](../benchmarks/vending-bench-2.md) public-
-leaderboard leader at $8,017.59 *and* one of the two highest-
-variance backends on [Harness-Bench](../benchmarks/harness-bench.md)
+[Claude Opus 4.6](../models/claude-opus-4-7.md) posts a strong
+[Vending-Bench 2](../benchmarks/vending-bench-2.md) score of
+$8,017.59 — rank 3 on the current board, and the leader when
+Harness-Bench was run — *and* is one of the two highest-variance
+backends on [Harness-Bench](../benchmarks/harness-bench.md)
 (the other is `deepseek-v4-flash`). Both can be true: Opus 4.6 is
 strong inside a dedicated, well-tuned long-horizon scaffold and
 brittle across arbitrary scaffold swaps. This is the picture the

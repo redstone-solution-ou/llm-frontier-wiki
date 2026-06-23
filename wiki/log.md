@@ -35,7 +35,7 @@ self-reported and that newer Anthropic models (Opus 4.7, 4.8,
 Fable 5) have side-channel data but no canonical leaderboard
 entry. Touched [models/claude-opus-4-7.md](models/claude-opus-4-7.md),
 [models/claude-opus-4-8.md](models/claude-opus-4-8.md),
-[models/glm-5-1.md](models/glm-5-1.md), and
+[models/glm-5-2.md](models/glm-5-2.md) (then filed as glm-5-1), and
 [models/gemini-3-pro.md](models/gemini-3-pro.md) with the relevant
 rows.
 
@@ -183,7 +183,7 @@ Six models tracked: [Claude Fable 5](models/claude-fable-5.md),
 [Claude Opus 4.7](models/claude-opus-4-7.md),
 [Claude Opus 4.8](models/claude-opus-4-8.md),
 [GPT-5.5](models/gpt-5-5.md) (with GPT-5.5 Pro variant),
-[GLM-5.1](models/glm-5-1.md), [Gemini 3 Pro](models/gemini-3-pro.md).
+[GLM-5.1](models/glm-5-2.md), [Gemini 3 Pro](models/gemini-3-pro.md).
 Four benchmarks tracked:
 [Vending-Bench 2](benchmarks/vending-bench-2.md),
 [DeepSWE](benchmarks/deepswe.md),
@@ -193,3 +193,39 @@ model is on the top-5 of at least one tracked benchmark's primary
 ranking, except Opus 4.7 which is tracked because Anthropic and
 secondary coverage identify it as the current Vending-Bench Arena
 vendor pick despite no canonical 5-run-average filing.
+
+## [2026-06-23] refresh | Vending-Bench 2 official leaderboard — Opus 4.7 now rank 1
+
+Re-checked [Vending-Bench 2](benchmarks/vending-bench-2.md) against
+the official Andon Labs page
+([andonlabs.com/evals/vending-bench-2](https://andonlabs.com/evals/vending-bench-2),
+accessed 2026-06-23) after a user flagged the score as stale. The
+2026-06-22 snapshot had been built from a lagging llm-stats mirror and
+was wrong at the top. The official board now lists 49 models, led by
+**Claude Opus 4.7 at $10,936.76** (first model past $10k), then
+**GLM-5.2 $8,313.78**, **Claude Opus 4.6 $8,017.59**, **GPT-5.5
+$7,523.84**, **Claude Sonnet 4.6 $7,204.14**; Opus 4.8 (`- High`) is
+rank 9 ($5,787.43) and Fable 5 (`- High`) rank 10 ($5,680.26).
+Corrections: Opus 4.7 promoted from "no canonical filing / Arena vendor
+pick" to outright leader; the open-weights leaf renamed
+[models/glm-5-1.md → models/glm-5-2.md](models/glm-5-2.md) ($5,634.41 →
+$8,313.78, now above Opus 4.6); Opus 4.8 and Fable 5 reclassified from
+side-channel / single-best estimates to on-board five-run averages;
+Gemini 3 Pro ($5,478.16) marked below the current top ten. Folded in
+the official trend analysis (+$799/month Western, +$1,047/month Chinese,
+~131-day lag, projected crossover Aug 2027) and methodology levers
+($100 per 1M output tokens billed weekly, ~69k context window). Touched
+[benchmarks/vending-bench-2.md](benchmarks/vending-bench-2.md),
+[frontier-leaderboard.md](frontier-leaderboard.md),
+[models/claude-opus-4-7.md](models/claude-opus-4-7.md),
+[models/glm-5-2.md](models/glm-5-2.md),
+[models/gpt-5-5.md](models/gpt-5-5.md),
+[models/claude-opus-4-8.md](models/claude-opus-4-8.md),
+[models/claude-fable-5.md](models/claude-fable-5.md),
+[models/gemini-3-pro.md](models/gemini-3-pro.md),
+[models/models.md](models/models.md), [overview.md](overview.md),
+[index.md](index.md),
+[concepts/long-horizon-agentic-coherence.md](concepts/long-horizon-agentic-coherence.md),
+[benchmarks/harness-bench.md](benchmarks/harness-bench.md), and
+[scripts/generate_frontier_chart.py](../scripts/generate_frontier_chart.py)
+(chart regenerated).

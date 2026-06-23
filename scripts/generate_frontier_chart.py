@@ -43,13 +43,13 @@ VENDOR_COLOURS = {
 #               down-arrow caret
 MODELS = [
     # label,              x,     y,    vendor,      x_kind,    y_kind,    xerr, yerr
-    ("Claude Fable 5",    5680, 87.8, "Anthropic", "measured", "measured", None, 5.2),
-    ("GPT-5.5 Pro",       6000, 78.0, "OpenAI",    "proxy",    "measured", None, 6.5),
-    ("GPT-5.5",           6000, 72.5, "OpenAI",    "proxy",    "measured", None, 7.1),
-    ("Claude Opus 4.8",   5787, 56.1, "Anthropic", "measured", "measured", None, 7.8),
-    ("Claude Opus 4.7",   7500, 52.0, "Anthropic", "inferred", "inferred", None, None),
+    ("Claude Opus 4.7",  10937, 52.0, "Anthropic", "measured", "inferred", None, None),
+    ("GLM-5.2",           8314, 30.0, "Zhipu AI",  "measured", "absent",   None, None),
     ("Claude Opus 4.6",   8018, 40.0, "Anthropic", "measured", "absent",   None, None),
-    ("GLM-5.1",           5634, 30.0, "Zhipu AI",  "measured", "absent",   None, None),
+    ("GPT-5.5 Pro",       7524, 78.0, "OpenAI",    "proxy",    "measured", None, 6.5),
+    ("GPT-5.5",           7524, 72.5, "OpenAI",    "measured", "measured", None, 7.1),
+    ("Claude Opus 4.8",   5787, 56.1, "Anthropic", "measured", "measured", None, 7.8),
+    ("Claude Fable 5",    5680, 87.8, "Anthropic", "measured", "measured", None, 5.2),
     ("Gemini 3 Pro",      5478, 25.0, "Google",    "measured", "absent",   None, None),
 ]
 
@@ -70,12 +70,12 @@ def build_chart(output_path: Path) -> None:
     # Empty upper-right "frontier" quadrant shading — the wiki's
     # headline observation is that no current model occupies it.
     quadrant = Rectangle(
-        (7500, 80), 3500, 20,
+        (8000, 80), 4000, 20,
         facecolor="#FFF3B0", alpha=0.55, zorder=0,
     )
     ax.add_patch(quadrant)
     ax.text(
-        9250, 91,
+        10000, 91,
         'empty "frontier" quadrant\n(no current model\nleads both axes)',
         ha="center", va="center",
         fontsize=9.5, style="italic", color="#7A6500", zorder=1,
@@ -107,13 +107,13 @@ def build_chart(output_path: Path) -> None:
         # uniformly regardless of the asymmetric data scale.
         # Tuned manually for the v0 model set; redo when models change.
         offsets_px = {
-            "Claude Fable 5":  ( 18,   0),   # right of marker
-            "GPT-5.5 Pro":     ( 18,   8),   # right-up
-            "GPT-5.5":         ( 18,  -8),   # right-down
+            "Claude Opus 4.7": (-18,   0),   # left (far-right marker)
+            "GLM-5.2":         ( 18,  -8),   # right-down
+            "Claude Opus 4.6": ( 18,   8),   # right-up
+            "GPT-5.5 Pro":     ( 18,  10),   # right-up
+            "GPT-5.5":         ( 18, -10),   # right-down
             "Claude Opus 4.8": (-18,   0),   # left of marker
-            "Claude Opus 4.7": ( 18,   0),   # right
-            "Claude Opus 4.6": ( 18,   0),   # right
-            "GLM-5.1":         (-18,   0),   # left
+            "Claude Fable 5":  ( 18,   0),   # right of marker
             "Gemini 3 Pro":    (-18,  -2),   # left
         }
         dx_px, dy_px = offsets_px[label]
@@ -128,7 +128,7 @@ def build_chart(output_path: Path) -> None:
         )
 
     # Axes
-    ax.set_xlim(0, 11000)
+    ax.set_xlim(0, 12000)
     ax.set_ylim(0, 102)
     ax.set_xlabel(
         "Long-horizon agentic coherence  →  "
@@ -143,8 +143,8 @@ def build_chart(output_path: Path) -> None:
 
     # Reference gridlines for the leaderboard ranks
     for x_ref, label in [
-        (8018, "Opus 4.6 baseline"),
-        (5500, "rank 2-4 band"),
+        (10937, "Opus 4.7 leader"),
+        (8018, "Opus 4.6"),
     ]:
         ax.axvline(x_ref, color="#999", linestyle=":", linewidth=0.8, alpha=0.6)
     for y_ref in [56.1, 78.0, 87.8]:
@@ -160,7 +160,7 @@ def build_chart(output_path: Path) -> None:
     )
     fig.text(
         0.06, 0.95,
-        "filed 2026-06-22  ·  sources: Andon Labs Vending-Bench 2, "
+        "filed 2026-06-23  ·  sources: Andon Labs Vending-Bench 2, "
         "Epoch AI FrontierMath Tier 4 (v2), DeepSWE.net",
         fontsize=9.5, color="#555", ha="left", va="top",
     )

@@ -23,7 +23,7 @@ when it is an improvement on others.
 | [DeepSWE](../benchmarks/deepswe.md) | 58% ±5% | `[max]` | 2026-05 | [deepswe.net](https://deepswe.net/) |
 | [FrontierMath Tier 4 (v2)](../benchmarks/frontiermath.md) | 56.1% ±7.8 | `[max]` | 2026-06 | [LM Council mirror](https://lmcouncil.ai/benchmarks) |
 | [FrontierMath Tiers 1–3 (v2)](../benchmarks/frontiermath.md) | 80.0% ±2.4 | `[max]` | 2026-06 | [LM Council mirror](https://lmcouncil.ai/benchmarks) |
-| [Vending-Bench 2](../benchmarks/vending-bench-2.md) | not on public leaderboard; vendor-reported as **below Opus 4.6's $8,017.59** | not disclosed | 2026-06 | [Andon Labs blog](https://andonlabs.com/blog/opus-4-8-vending-bench) |
+| [Vending-Bench 2](../benchmarks/vending-bench-2.md) | **$5,787.43** (rank 9, 5-run avg) — below Opus 4.6 (rank 3) and Opus 4.7 (rank 1) | High | 2026-06 | [Andon Labs](https://andonlabs.com/evals/vending-bench-2) (accessed 2026-06-23) |
 | [SWE-PRBench](../benchmarks/swe-prbench.md) | not in paper baseline | — | — | — |
 
 ## Where this model sits on the axes
@@ -40,9 +40,10 @@ when it is an improvement on others.
   siblings on [DeepSWE](../benchmarks/deepswe.md) (58% ±5% vs Opus
   4.7's 54% ±5%) — i.e. on long-horizon coding specifically, Opus
   4.8 is the strongest Anthropic option. On the broader
-  Vending-Bench 2 / Vending-Bench Arena business-simulation
-  variants, Anthropic's own commentary documents a regression vs
-  Opus 4.6 / 4.7. This is one of the rare model leafs where
+  Vending-Bench 2 business simulation it lands at rank 9
+  ($5,787.43), *below* both Opus 4.6 (rank 3) and Opus 4.7 (rank 1)
+  — the regression is now visible directly on the board, not only
+  in vendor commentary. This is one of the rare model leafs where
   intra-axis position is *not* a single number.
 
 ## When to pick this model

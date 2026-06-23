@@ -65,16 +65,16 @@ Pages within a section are sorted alphabetically.
   2026. Frontier reasoning leader at 87.8% ±5.2 on FrontierMath
   Tier 4 v2.
 - [models/claude-opus-4-7.md](models/claude-opus-4-7.md) —
-  Anthropic, 2026. Working pick for long-horizon agentic
-  coherence; Opus 4.6 baseline is $8,017.59 on Vending-Bench 2.
+  Anthropic, 2026. Vending-Bench 2 leader at $10,936.76 (rank 1);
+  the wiki's pick for long-horizon agentic coherence.
 - [models/claude-opus-4-8.md](models/claude-opus-4-8.md) —
   Anthropic, 2026. Alignment-tuned successor; DeepSWE rank-2 at
   58% ±5% but documented Vending-Bench 2 regression vs Opus 4.6.
 - [models/gemini-3-pro.md](models/gemini-3-pro.md) — Google
-  DeepMind, late 2025 / early 2026. Vending-Bench 2 rank-3 at
-  $5,478.16.
-- [models/glm-5-1.md](models/glm-5-1.md) — Zhipu AI, 2026. Open-
-  weights pick; Vending-Bench 2 rank-2 at $5,634.41.
+  DeepMind, late 2025 / early 2026. Vending-Bench 2 $5,478.16
+  (was rank 3; now below the current top 10).
+- [models/glm-5-2.md](models/glm-5-2.md) — Zhipu AI, 2026. Open-
+  weights pick; Vending-Bench 2 rank-2 at $8,313.78 (above Opus 4.6).
 - [models/gpt-5-5.md](models/gpt-5-5.md) — OpenAI, 2026 (with
   GPT-5.5 Pro variant). DeepSWE rank-1 at 70% ±4%, FrontierMath
   Tier 4 v2 rank-2 (Pro) at 78.0% ±6.5.

@@ -26,8 +26,8 @@ evidence for that claim is laid out in the
 [frontier leaderboard](frontier-leaderboard.md); the short version
 is that the FrontierMath Tier 4 v2 leader ([Claude Fable
 5](models/claude-fable-5.md), 87.8% ±5.2) is *not* the
-Vending-Bench 2 leader ([Claude Opus 4.6](models/claude-opus-4-7.md),
-$8,017.59 five-run average), and the Vending-Bench 2 leader is
+Vending-Bench 2 leader ([Claude Opus 4.7](models/claude-opus-4-7.md),
+$10,936.76 five-run average), and the Vending-Bench 2 leader is
 *not* on the FrontierMath Tier 4 v2 top-5 at all.
 
 The rest of this page walks through that thesis end to end. The
@@ -123,28 +123,30 @@ operational pressure: identity drift, loops, hallucinated supplier
 emails, payments made twice, over-trust of adversarial
 counterparties.
 
-The public leaderboard ([llm-stats mirror, filed 2026-06-22](https://llm-stats.com/benchmarks/vending-bench-2)) is:
+The official leaderboard ([Andon Labs, accessed 2026-06-23](https://andonlabs.com/evals/vending-bench-2)), top of 49 listed models, is:
 
 | Rank | Model | Final balance |
 |------|-------|---------------|
-| 1 | [Claude Opus 4.6](models/claude-opus-4-7.md) | $8,017.59 |
-| 2 | [GLM-5.1 (Zhipu AI)](models/glm-5-1.md) | $5,634.41 |
-| 3 | [Gemini 3 Pro](models/gemini-3-pro.md) | $5,478.16 |
-| 4 | Gemini 3 Flash | $3,635.00 |
+| 1 | [Claude Opus 4.7](models/claude-opus-4-7.md) | $10,936.76 |
+| 2 | [GLM-5.2 (Zhipu AI)](models/glm-5-2.md) | $8,313.78 |
+| 3 | [Claude Opus 4.6](models/claude-opus-4-7.md) | $8,017.59 |
+| 4 | [GPT-5.5](models/gpt-5-5.md) | $7,523.84 |
+| 5 | Claude Sonnet 4.6 | $7,204.14 |
 
-Opus 4.6's ~$2,400 lead over the second-place open-weights model
-is the single sharpest coherence signal the public has. Two
-caveats matter: (a) newer Anthropic models (Opus 4.7, 4.8, Fable
-5) have side-channel data but no canonical five-run-average row
-yet, and Anthropic's own commentary documents Opus 4.8 as a
-*regression* vs Opus 4.6 on this benchmark, and (b) the entire
-leaderboard is self-reported per the operator's own disclosure.
+Opus 4.7's ~$2,600 lead over rank-2 GLM-5.2 — and its ~$2,900
+(+36%) jump over its own predecessor Opus 4.6 — is the single
+sharpest coherence signal the public has. Two things to note: (a)
+Opus 4.8 (`- High`) lands at rank 9 ($5,787.43), *below* both Opus
+4.6 and 4.7, matching Anthropic's own framing of 4.8 as a
+*regression* on this benchmark, and (b) the leaderboard is
+operator-run by Andon Labs on its own harness.
 
-The wiki's working pick for unsupervised agentic deployments is
-[Claude Opus 4.7](models/claude-opus-4-7.md), in close contact with
-the Opus 4.6 baseline and per secondary coverage leading the
+The wiki's pick for unsupervised agentic deployments is
+[Claude Opus 4.7](models/claude-opus-4-7.md), the current
+Vending-Bench 2 leader and also the top model on the multi-agent
 *Vending-Bench Arena* variant. For an open-weights alternative
-the wiki picks [GLM-5.1](models/glm-5-1.md).
+the wiki picks [GLM-5.2](models/glm-5-2.md), now rank 2 and above
+Opus 4.6.
 
 ## Why the wiki adds DeepSWE and SWE-PRBench
 
@@ -238,11 +240,11 @@ llm-frontier-wiki
 |
 +-- models/
 |   +-- claude-fable-5                  (axis 1 leader)
-|   +-- claude-opus-4-7                 (axis 2 working pick)
+|   +-- claude-opus-4-7                 (axis 2 leader; Vending-Bench 2 rank 1)
 |   +-- claude-opus-4-8                 (axis 1 mid-tier; axis 2 regression vs predecessor)
 |   +-- gpt-5-5                         (top-tier both axes; closest to upper-right quadrant)
-|   +-- glm-5-1                         (axis 2 open-weights pick)
-|   +-- gemini-3-pro                    (axis 2 top-3)
+|   +-- glm-5-2                         (axis 2 open-weights pick; rank 2)
+|   +-- gemini-3-pro                    (axis 2; 2025-12 score, now below top 10)
 |
 +-- frontier-leaderboard.md             (the 2D chart and ranking)
 ```

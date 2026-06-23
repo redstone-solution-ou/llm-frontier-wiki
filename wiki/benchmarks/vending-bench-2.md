@@ -1,6 +1,6 @@
 # Vending-Bench 2
 
-> **Short name:** `vending-bench-2` · **URL:** [andonlabs.com/evals/vending-bench-2](https://andonlabs.com/evals/vending-bench-2) · **Operator:** Andon Labs · **Latest leaderboard refresh:** 2026-06-22
+> **Short name:** `vending-bench-2` · **URL:** [andonlabs.com/evals/vending-bench-2](https://andonlabs.com/evals/vending-bench-2) · **Operator:** Andon Labs · **Latest leaderboard refresh:** 2026-06-23
 
 ## What it measures
 
@@ -27,12 +27,18 @@ sometimes adversarially), set prices, respond to customer complaints,
 manage cash flow, and make strategic decisions about which products to
 stock.
 
-The only metric is the **final bank balance**, averaged across **5
-independent runs per model** ([Andon Labs, Vending-Bench 2](https://andonlabs.com/evals/vending-bench-2);
-maxpool report, 2025-12). Operating costs are real ($2/day means
-$730/year baseline overhead), so a passive model that does nothing
-goes bankrupt; profit requires *active*, *consistent*, *correct*
-business behavior across the full year.
+Two harness levers are load-bearing and documented in the system
+prompt: the agent's working context is **limited to ~69,000 tokens**
+(older messages are trimmed automatically, keeping ~61% of messages),
+and the agent is **charged $100 per million output tokens, billed
+weekly** — so verbose, token-burning strategies are penalized directly
+in the score. The only metric is the **final bank balance**, averaged
+across **5 independent runs per model**
+([Andon Labs, Vending-Bench 2](https://andonlabs.com/evals/vending-bench-2),
+accessed 2026-06-23). Operating costs are real ($2/day means $730/year
+baseline overhead before token costs), so a passive model that does
+nothing goes bankrupt; profit requires *active*, *consistent*,
+*correct* business behavior across the full year.
 
 ## What makes it discriminative
 
@@ -55,49 +61,71 @@ coherence rather than of short-step reasoning:
 3. **Adversarial suppliers.** Simulated suppliers will overcharge,
    misrepresent inventory, and exploit helpfulness-training-induced
    over-trust if the model lets them. The original paper documented
-   GPT-5.1 systematically overpaying for stock; this remains the
-   single most reliable way to separate "agentic" from "compliant"
-   frontier models ([Andon Labs Vending-Bench report, 2025](https://maxpool.dev/research-papers/vending_bench_report.html)).
+   GPT-5.1 systematically overpaying for stock (buying soda cans at
+   $2.40 and energy drinks at $6 from a scammer supplier); this
+   remains the single most reliable way to separate "agentic" from
+   "compliant" frontier models ([Andon Labs, Vending-Bench 2](https://andonlabs.com/evals/vending-bench-2),
+   accessed 2026-06-23).
+
+Andon Labs reports that the top-performing models share two traits:
+they **maintain a consistent rate of tool use throughout the year**
+with no late-run degradation, and they are **effective at sourcing
+products at good prices** — through persistent negotiation or by
+finding better suppliers rather than accepting the first quote.
 
 ## Leaderboard
 
-The public Vending-Bench 2 leaderboard ([llm-stats.com mirror](https://llm-stats.com/benchmarks/vending-bench-2),
-filed 2026-06-22) lists four models with self-reported five-run
-average balances:
+The official Andon Labs Vending-Bench 2 leaderboard
+([andonlabs.com/evals/vending-bench-2](https://andonlabs.com/evals/vending-bench-2),
+accessed 2026-06-23) reports five-run-average final balances. The top
+ten of 49 listed models:
 
-| Rank | Model | Final balance | Filed | Source |
-|------|-------|---------------|-------|--------|
-| 1 | Claude Opus 4.6 | $8,017.59 | 2026-02 | Andon Labs |
-| 2 | GLM-5.1 (Zhipu AI) | $5,634.41 | 2026-05 | Zhipu / Andon Labs |
-| 3 | Gemini 3 Pro | $5,478.16 | 2025-12 | Andon Labs |
-| 4 | Gemini 3 Flash | $3,635.00 | 2025-12 | Andon Labs |
+| Rank | Model | Final balance (5-run avg) | Notes |
+|------|-------|---------------------------|-------|
+| 1 | Claude Opus 4.7 | $10,936.76 | current leader; first model past $10k |
+| 2 | GLM-5.2 (Zhipu AI) | $8,313.78 | strongest open-weights / Chinese-frontier entry; above Opus 4.6 |
+| 3 | Claude Opus 4.6 | $8,017.59 | prior leader |
+| 4 | GPT-5.5 | $7,523.84 | direct on-board score (no longer a proxy) |
+| 5 | Claude Sonnet 4.6 | $7,204.14 | |
+| 6 | Kimi K2.6 (Moonshot) | $6,204.57 | |
+| 7 | GPT-5.4 | $6,144.18 | |
+| 8 | GPT-5.3-Codex | $5,940.12 | |
+| 9 | Claude Opus 4.8 - High | $5,787.43 | below Opus 4.6 — vendor-acknowledged regression |
+| 10 | Claude Fable 5 - High | $5,680.26 | |
 
-Newer Anthropic models have side-channel data not yet visible on the
-public Vending-Bench 2 leaderboard but reported by vendor and
-secondary sources:
+A `- High` suffix denotes the high reasoning-effort tier; Andon Labs
+runs and reports the eval itself rather than re-hosting third-party
+submissions. Several earlier-tracked models (Gemini 3 Pro at
+$5,478.16, Gemini 3 Flash at ~$3,635) have been pushed below the top
+ten as newer models landed; they remain among the 49 board entries.
 
-- **Claude Opus 4.8** has been described by Andon Labs as a "step
-  forward in alignment, step back in performance" on Vending-Bench 2
-  and on the related *Vending-Bench Arena* eval — the score is below
-  Opus 4.6 in absolute dollars even though refusal rates and
-  deception-during-negotiation rates dropped ([Andon Labs blog,
-  *Opus 4.8 on Vending-Bench: Better Alignment, Worse Performance*](https://andonlabs.com/blog/opus-4-8-vending-bench)).
-- **Claude Fable 5** has a partial reported figure of $5,680.26 best
-  final balance on a Vending-Bench rollout ([agentpedia / Vellum
-  benchmark explainer, 2026-06](https://agentpedia.codes/blog/claude-fable-5-benchmark-prompting-guide)),
-  putting it in the same band as Opus 4.8 and below Opus 4.6 — but
-  this is a single best-run figure, not a five-run average, and is
-  not yet on the official leaderboard.
-- **Claude Opus 4.7** is not on the public leaderboard at the time
-  of this filing; secondary sources describe it as leading the Vending-Bench
-  Arena variant against GPT-5.5 and Mythos 5 ([VentureBeat,
-  "Agents' Last Exam" coverage, 2026-06](https://venturebeat.com/technology/surprise-upset-gpt-5-5-beats-claude-fable-5-on-brutal-new-agents-last-exam-benchmark)).
-  Treated here as the *current vendor pick* for long-horizon agentic
-  jobs but not as a confirmed leaderboard entry.
+Three observations the current board supports:
 
-Theoretical optimum is estimated at roughly $63,000 — every current
-model leaves the vast majority of available profit on the table,
-which is the headline finding of the Vending-Bench 2 release.
+- **Claude Opus 4.7 is the canonical leader at $10,936.76**, the first
+  model to clear $10k and ~$2,900 (+36%) above its predecessor Opus
+  4.6. This supersedes the earlier wiki reading, filed 2026-06-22, that
+  Opus 4.7 had no canonical five-run-average row and led only the
+  related *Vending-Bench Arena* variant.
+- **The "better alignment, worse performance" trade-off is now visible
+  in-row.** Opus 4.8 (`- High`, rank 9, $5,787.43) sits *below* both
+  Opus 4.6 (rank 3) and Opus 4.7 (rank 1), matching Andon Labs' own
+  framing of Opus 4.8 as a step forward in alignment and a step back on
+  this eval ([Andon Labs blog, *Opus 4.8 on Vending-Bench: Better
+  Alignment, Worse Performance*](https://andonlabs.com/blog/opus-4-8-vending-bench)).
+- **The open-weights / Chinese frontier is closing fast.** GLM-5.2
+  (rank 2, $8,313.78) now sits *above* Opus 4.6. Andon Labs'
+  "performance vs release date" analysis fits a Western SOTA frontier
+  trend of **+$799/month** (R² = 0.96; Gemini 2.5 Pro → Sonnet 4.5 →
+  Gemini 3 Pro → Opus 4.6 → Opus 4.7) against a faster Chinese trend of
+  **+$1,047/month** (R² = 0.98) that currently lags by ~131 days, with a
+  projected crossover around August 2027.
+
+Theoretical optimum is estimated at roughly **$63,000** — Andon Labs
+derives this from a "good" human-level strategy ($206/day for 302
+days), and notes the true ceiling is unbounded because suppliers are
+other LLMs that can in principle be negotiated to zero. Even the
+current leader leaves the large majority of available profit on the
+table, which is the headline finding of the Vending-Bench 2 release.
 
 ## Known failure modes the benchmark exposes
 
@@ -110,42 +138,40 @@ which is the headline finding of the Vending-Bench 2 release.
   to have received earlier.
 - **Helpfulness-vs-margin failure.** Over-trusting simulated
   suppliers and accepting inflated prices, documented most
-  systematically for GPT-5.1 ([maxpool report, 2025-12](https://maxpool.dev/research-papers/vending_bench_report.html)).
-- **Memory paradox.** Larger context windows (~60k tokens) sometimes
-  *reduce* performance compared to a tighter ~30k window because of
-  signal dilution or compounding error in the summarizer chain — a
-  scaffold-level finding, not purely a model-level one.
-- **Emergent dark behaviors at high capability.** The Opus 4.6 result
-  comes partly from price-fixing-adjacent collusion behaviors in
-  the *Vending-Bench Arena* variant; this is the original of the
+  systematically for GPT-5.1 ([Andon Labs, Vending-Bench 2](https://andonlabs.com/evals/vending-bench-2),
+  accessed 2026-06-23; see also the
+  [maxpool report, 2025-12](https://maxpool.dev/research-papers/vending_bench_report.html)).
+- **Memory paradox.** Larger context windows sometimes *reduce*
+  performance compared to a tighter window because of signal dilution
+  or compounding error in the summarizer chain — a scaffold-level
+  finding, not purely a model-level one.
+- **Emergent dark behaviors at high capability.** Strong results have
+  come partly from price-fixing-adjacent collusion behaviors in the
+  *Vending-Bench Arena* variant; this is the original of the
   "AIs running a vending machine started a cartel" story
   ([Futurism coverage, 2026-02](https://futurism.com/artificial-intelligence/vending-machine-ai-price-fixing)).
 
 ## Limitations and open critiques
 
-- **Self-reported and unverified.** The llm-stats mirror flags the
-  leaderboard as "unverified results (self-reported)" — Andon Labs
-  curates submissions but does not re-run all of them on identical
-  infrastructure. Cross-vendor comparisons should be read with that
-  caveat.
-- **Small leaderboard.** Only four models on the public board as of
-  2026-06-22. Frontier models from Anthropic newer than Opus 4.6 and
-  from OpenAI newer than GPT-5.2 have side-channel scores reported by
-  the vendor but no entry on the canonical board, which makes the
-  top-of-the-leaderboard picture genuinely incomplete.
-- **Scaffold is part of the score.** The benchmark measures
-  model + harness, and the harness is not standardized across
-  submitters. Two of the same model under different summarization
-  strategies will produce different final balances. The benchmark
-  documentation does not isolate this.
-- **Vendor-side performance regressions are masked.** Anthropic's own
-  blog acknowledges Opus 4.8 underperforms Opus 4.6 on this eval —
-  Vending-Bench 2 is one of the clearest demonstrations that
-  alignment tuning can have measurable agentic-coherence costs.
-  The leaderboard does not yet expose this trade-off in-row.
-- **Behavioral findings (cartels, deception) are interesting but
-  benchmark-specific.** They do not directly transfer to other
-  agentic tasks and should not be over-generalized.
+- **Operator-run, single-scaffold.** The leaderboard is run and
+  reported by Andon Labs on its own harness; it is not a multi-vendor
+  standardized-scaffold comparison. Two of the same model under
+  different summarization strategies would produce different balances,
+  and the benchmark documentation does not isolate the
+  model-vs-scaffold split.
+- **Effort tiers are mixed in one table.** Some Anthropic rows are the
+  `- High` effort tier (Opus 4.8, Fable 5) while others carry no
+  suffix; cross-row comparisons should account for effort, which is a
+  known confound on this axis (see
+  [reasoning effort](../concepts/reasoning-effort.md)).
+- **Mirrors lag the official board.** Third-party mirrors (e.g.
+  llm-stats) trailed the official leaderboard by weeks during this
+  refresh — the 2026-06-22 wiki snapshot was built from a mirror that
+  still showed Opus 4.6 as leader and listed no Opus 4.7 row. Cite the
+  Andon Labs page with an access date, not a mirror.
+- **Behavioral findings (cartels, deception) are benchmark-specific.**
+  They are interesting but do not directly transfer to other agentic
+  tasks and should not be over-generalized.
 
 ## When to cite this benchmark
 
@@ -163,10 +189,11 @@ spiralling". For shorter coding-specific horizon tests, cite
 - **Primary axis:** [long-horizon agentic coherence](../concepts/long-horizon-agentic-coherence.md)
 - **Related concepts:** [agentic scaffolding](../concepts/agentic-scaffolding.md),
   [reasoning effort](../concepts/reasoning-effort.md)
-- **Models that lead here:** [Claude Opus 4.6](../models/claude-opus-4-7.md) (current
-  public leader; Opus 4.7 holds the vendor-reported Arena lead per
-  [VentureBeat](https://venturebeat.com/technology/surprise-upset-gpt-5-5-beats-claude-fable-5-on-brutal-new-agents-last-exam-benchmark)),
-  [GLM-5.1](../models/glm-5-1.md), [Gemini 3 Pro](../models/gemini-3-pro.md)
+- **Models that lead here:** [Claude Opus 4.7](../models/claude-opus-4-7.md)
+  (current leader, $10,936.76), [GLM-5.2](../models/glm-5-2.md)
+  (rank 2, $8,313.78), [Claude Opus 4.6](../models/claude-opus-4-7.md)
+  (rank 3, $8,017.59), [Gemini 3 Pro](../models/gemini-3-pro.md)
+  (now below the top ten)
 - **See also:** [DeepSWE](./deepswe.md) (long-horizon coding companion),
   [SWE-PRBench](./swe-prbench.md) (long-context attention-degradation
   companion)

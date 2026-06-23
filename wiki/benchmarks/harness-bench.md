@@ -140,10 +140,11 @@ suite*. The qualitative finding (text, §4.3, page 7):
   rank depends heavily on which harness wraps them.
 
 The wiki extracts a specific cross-wiki-axis observation from this
-finding: `claude-opus-4.6` is the [Vending-Bench 2](vending-bench-2.md)
-public-leaderboard leader at $8,017.59 (single dedicated scaffold,
-self-reported), and is *also* the highest-variance backend on
-Harness-Bench (multi-harness factorial). Both can be true: Opus 4.6
+finding: `claude-opus-4.6` posts a strong [Vending-Bench 2](vending-bench-2.md)
+score of $8,017.59 — rank 3 on the current board, and the leader at
+the time Harness-Bench was run — on a single dedicated scaffold, yet
+is *also* the highest-variance backend on Harness-Bench (multi-harness
+factorial). Both can be true: Opus 4.6
 is strong inside a well-tuned long-horizon scaffold and brittle
 across arbitrary scaffold swaps. This is exactly the picture the
 [agentic-scaffolding](../concepts/agentic-scaffolding.md) concept
@@ -275,7 +276,7 @@ For raw reasoning ceiling, cite [FrontierMath](frontiermath.md).
   [Claude Opus 4.6 / 4.7](../models/claude-opus-4-7.md) (4.6
   explicitly evaluated; 4.7 is the in-wiki follow-up),
   [Gemini 3 Pro](../models/gemini-3-pro.md) (3.1-pro-preview),
-  [GLM-5.1](../models/glm-5-1.md). [GPT-5.5](../models/gpt-5-5.md)
+  [the GLM-5 line](../models/glm-5-2.md). [GPT-5.5](../models/gpt-5-5.md)
   is one generation newer than the GPT-5.4 backend Harness-Bench
   tests; [Fable 5](../models/claude-fable-5.md) and Opus 4.8
   post-date the paper.

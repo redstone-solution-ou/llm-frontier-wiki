@@ -20,7 +20,7 @@ agentic suitability.
 |-----------|-------|-------------|-------|--------|
 | [FrontierMath Tier 4 (v2)](../benchmarks/frontiermath.md) | 87.8% ±5.2 | `[max]` | 2026-06 | [LM Council mirror](https://lmcouncil.ai/benchmarks) |
 | [FrontierMath Tiers 1–3 (v2)](../benchmarks/frontiermath.md) | 87.0% ±2.0 | `[max]` | 2026-06 | [LM Council mirror](https://lmcouncil.ai/benchmarks) |
-| [Vending-Bench 2](../benchmarks/vending-bench-2.md) | $5,680.26 (best single rollout, not 5-run avg) | not disclosed | 2026-06 | [agentpedia mirror](https://agentpedia.codes/blog/claude-fable-5-benchmark-prompting-guide) |
+| [Vending-Bench 2](../benchmarks/vending-bench-2.md) | $5,680.26 (rank 10, 5-run avg, `- High`) | High | 2026-06 | [Andon Labs](https://andonlabs.com/evals/vending-bench-2) (accessed 2026-06-23) |
 | [DeepSWE](../benchmarks/deepswe.md) | not on the public leaderboard | — | — | — |
 | [SWE-PRBench](../benchmarks/swe-prbench.md) | not in paper baseline | — | — | — |
 
@@ -33,11 +33,11 @@ agentic suitability.
   the harder tier — the signature of a model whose ceiling sits
   above the rest of the frontier.
 - **Long-horizon agentic coherence:** **Mid-pack.** The
-  $5,680.26 single-rollout figure on Vending-Bench 2 puts Fable 5
-  in roughly the same band as Claude Opus 4.8 ($5,787.43) and
-  below Claude Opus 4.6's leaderboard-leading $8,017.59. The
-  vendor / secondary commentary describes Fable 5 as a reasoning-
-  leaning rather than agent-leaning generation.
+  $5,680.26 five-run-average figure on Vending-Bench 2 (rank 10,
+  `- High`) puts Fable 5 in roughly the same band as Claude Opus
+  4.8 ($5,787.43, rank 9) and well below the leader Claude Opus 4.7
+  ($10,936.76). The vendor / secondary commentary describes Fable 5
+  as a reasoning-leaning rather than agent-leaning generation.
 
 ## When to pick this model
 
@@ -49,13 +49,13 @@ the model has the time it needs to think. Do not pick Fable 5
 as the unsupervised agent in a multi-hour business loop; pick a
 model that leads the
 [long-horizon agentic coherence](../concepts/long-horizon-agentic-coherence.md)
-axis (Opus 4.6 / 4.7) for that job.
+axis (Opus 4.7) for that job.
 
 ## Known caveats
 
-- The Vending-Bench 2 figure quoted is a *single best-run* number,
-  not the 5-run average the public leaderboard uses. The two are
-  not directly comparable; the wiki marks the figure as partial.
+- The Vending-Bench 2 figure is the official five-run average
+  (rank 10, `- High` effort tier); earlier wiki snapshots labeled
+  it a single best-run estimate, which the current board corrects.
 - Tier 4 confidence interval is ±5.2 percentage points. The 10-
   point gap to the second-place base model is robust to that
   interval, but the absolute number could move within it on

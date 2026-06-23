@@ -27,7 +27,7 @@ line on the frontier-model market.
 | [FrontierMath Tier 4 (v2)](../benchmarks/frontiermath.md) | GPT-5.5 | 72.5% ±7.1 (rank 4) | `[xhigh]` | 2026-06 | [LM Council mirror](https://lmcouncil.ai/benchmarks) |
 | [FrontierMath Tiers 1–3 (v2)](../benchmarks/frontiermath.md) | GPT-5.5 Pro | **87.7% ±1.9** (rank 1) | `[xhigh]` | 2026-06 | [LM Council mirror](https://lmcouncil.ai/benchmarks) |
 | [FrontierMath Tiers 1–3 (v2)](../benchmarks/frontiermath.md) | GPT-5.5 | 85.3% ±2.1 (rank 3) | `[xhigh]` | 2026-06 | [LM Council mirror](https://lmcouncil.ai/benchmarks) |
-| [Vending-Bench 2](../benchmarks/vending-bench-2.md) | — | not on the public leaderboard; vendor-reported behind [Opus 4.6](claude-opus-4-7.md) and [Opus 4.7](claude-opus-4-7.md) on the Vending-Bench Arena variant | — | 2026-06 | [VentureBeat coverage](https://venturebeat.com/technology/surprise-upset-gpt-5-5-beats-claude-fable-5-on-brutal-new-agents-last-exam-benchmark) |
+| [Vending-Bench 2](../benchmarks/vending-bench-2.md) | GPT-5.5 | **$7,523.84** (rank 4, 5-run avg) | not disclosed | 2026-06 | [Andon Labs](https://andonlabs.com/evals/vending-bench-2) (accessed 2026-06-23) |
 | [SWE-PRBench](../benchmarks/swe-prbench.md) | — | not in paper baseline | — | — | — |
 
 ## Where this model sits on the axes
@@ -43,9 +43,9 @@ line on the frontier-model market.
   the smallest median output (47k tokens) and median wall-clock (20
   minutes)** of the top five — a meaningful efficiency lead, not
   just a raw pass-rate lead. On the broader Vending-Bench 2
-  business simulation the model is not on the public leaderboard;
-  secondary coverage places it behind the Anthropic Opus 4.6 / 4.7
-  pair.
+  business simulation it now files a direct rank-4 score of
+  $7,523.84 — behind Opus 4.7, GLM-5.2, and Opus 4.6, but ahead of
+  Claude Sonnet 4.6 and the rest of the board.
 
 ## When to pick this model
 
@@ -61,9 +61,9 @@ Pick GPT-5.5 (or Pro) when:
 
 Do not pick GPT-5.5 when:
 
-- The job is a multi-hour unsupervised business agent — Opus 4.6 /
-  4.7 lead the Vending-Bench 2 axis, GPT-5.5 is not on that
-  leaderboard.
+- The job is a multi-hour unsupervised business agent — Opus 4.7
+  leads the Vending-Bench 2 axis ($10,936.76), with GPT-5.5 a more
+  distant rank 4 ($7,523.84).
 - The job specifically requires the absolute reasoning ceiling on
   the hardest mathematics problems — Fable 5 leads Tier 4 by ~10
   points.

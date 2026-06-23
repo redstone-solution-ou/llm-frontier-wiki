@@ -145,19 +145,19 @@ hides:
 
 ## Models that exemplify high values on this axis
 
-- [Claude Opus 4.6](../models/claude-opus-4-7.md) — $8,017.59 on
-  Vending-Bench 2 (2026-02), the public-leaderboard leader and the
-  reference point against which Opus 4.8's regression is read.
-  Claude Opus 4.7 (covered on the same model leaf cluster) is
-  reported as the current vendor pick for long-horizon agentic
-  jobs, leading the Vending-Bench Arena variant per secondary
-  sources.
+- [Claude Opus 4.7](../models/claude-opus-4-7.md) — $10,936.76 on
+  Vending-Bench 2 (2026-06), the public-leaderboard leader and the
+  reference point against which Opus 4.8's regression (rank 9) is
+  read. Opus 4.6 ($8,017.59, rank 3) is the prior-leader anchor on
+  the same leaf.
 - [GPT-5.5](../models/gpt-5-5.md) — 70% ±4% on DeepSWE with the
   smallest median output tokens (47k) and wall-clock time (20 min)
   of any top-five entry, indicating efficient long-horizon coding
-  rather than brute-force token-burn.
-- [GLM-5.1](../models/glm-5-1.md) — $5,634.41 on Vending-Bench 2,
-  the strongest open-source result on the axis as of 2026-06.
+  rather than brute-force token-burn; also rank 4 on Vending-Bench 2
+  ($7,523.84).
+- [GLM-5.2](../models/glm-5-2.md) — $8,313.78 on Vending-Bench 2,
+  the strongest open-weights result on the axis (rank 2, above
+  Opus 4.6) as of 2026-06.
 
 ## Open questions
 
