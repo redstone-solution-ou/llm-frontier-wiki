@@ -361,12 +361,42 @@ a one-line gloss per sub-page. Target 120–180 words.
    back as a new concept page or update the leaderboard. Append to
    `wiki/log.md`.
 
+### Refresh: periodic leaderboard re-check
+
+Frontier models ship monthly and a primary-axis ranking can change
+within weeks — the 2026-06-23 refresh found Claude Opus 4.7 had taken
+the Vending-Bench 2 lead from Opus 4.6, invisible in the snapshot the
+wiki was built from. Do not let the wiki drift behind the boards. On a
+recurring cadence, and whenever a query touches a leaderboard number
+more than a month old, re-check and update.
+
+1. **Re-check the two primary-axis boards first** (target: monthly).
+   They are the load-bearing signals for the wiki's whole structure
+   and the deliberately chosen primary metric for each axis:
+   - *Frontier reasoning* → **FrontierMath Tier 4 (v2)** (Epoch AI).
+   - *Long-horizon agentic coherence* → **Vending-Bench 2** (Andon Labs).
+2. **Read the official operator page, never a third-party mirror.**
+   Mirrors (llm-stats, agentpedia, …) lag the operator board by weeks
+   and were the documented cause of the 2026-06-22 stale filing. Cite
+   the operator URL with an `accessed YYYY-MM-DD` date.
+3. Re-check the secondary benchmarks (DeepSWE, SWE-PRBench,
+   Harness-Bench) opportunistically, or at least quarterly.
+4. For any score that moved or any new top-5 model, run the matching
+   ingest workflow above: update `wiki/frontier-leaderboard.md` and
+   the model leaves, regenerate `wiki/assets/frontier-leaderboard.png`
+   via `scripts/generate_frontier_chart.py`, and sync `wiki/index.md`.
+5. Append `## [YYYY-MM-DD] refresh | <board> — <one-line delta>` to
+   `wiki/log.md` even when nothing changed — the re-check itself is a
+   record worth keeping.
+
 ### Lint: periodic health check
 
 - **Stale leaderboard rows** — every row on
   `wiki/frontier-leaderboard.md` should have a "filed on YYYY-MM-DD"
-  marker; flag anything more than 6 months old without a fresh
-  re-check.
+  marker. Flag the two primary-axis boards (FrontierMath Tier 4 v2,
+  Vending-Bench 2) if older than a month, and any other row older than
+  six months; then run the "Refresh: periodic leaderboard re-check"
+  workflow above.
 - **Orphan pages** — pages with zero inbound links.
 - **Broken relative links** — every `../x.md` must resolve.
 - **Template compliance** — benchmark leaves missing methodology or

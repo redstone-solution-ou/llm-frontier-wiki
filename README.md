@@ -68,7 +68,11 @@ Version 0 covers four primary benchmarks, two organizing axes, and
 six frontier models. The selection is deliberately small: the wiki's
 goal is to be *correctly opinionated* about the axes that matter,
 not to mirror every leaderboard on the web. Additions land via the
-ingest workflow in [CLAUDE.md](CLAUDE.md).
+ingest workflow in [CLAUDE.md](CLAUDE.md); the two primary-axis boards
+(FrontierMath Tier 4 v2 and Vending-Bench 2) are re-checked against
+their official operator pages on a recurring cadence — see the
+"Refresh: periodic leaderboard re-check" workflow in
+[CLAUDE.md](CLAUDE.md) — so the rankings stay current.
 
 Benchmarks tracked:
 
@@ -93,7 +97,7 @@ Benchmarks tracked:
   *review* is a different evaluation regime from code generation.
 
 Models tracked: Claude Fable 5, Claude Opus 4.7, Claude Opus 4.8,
-GPT-5.5 (and GPT-5.5 Pro), GLM-5.1, Gemini 3 Pro. Each model has
+GPT-5.5 (and GPT-5.5 Pro), GLM-5.2, Gemini 3 Pro. Each model has
 a leaf with its scores on every tracked benchmark and a one-line
 axis position summary.
 
